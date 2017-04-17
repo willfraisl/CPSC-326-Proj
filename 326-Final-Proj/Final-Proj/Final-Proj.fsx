@@ -7,6 +7,7 @@
 // Once you have packages, use Alt+Enter (in VS) or Ctrl+Enter to
 // run the following in F# Interactive. You can ignore the project
 // (running it doesn't do anything, it just contains this script)
+(*
 #load "../../packages/FsLab/FsLab.fsx"
 
 open Deedle
@@ -36,3 +37,20 @@ abs (czschool - euschool)
 |> Chart.Line
 |> Chart.WithOptions (Options(legend=Legend(position="bottom")))
 |> Chart.WithLabels ["CZ"; "EU"]
+
+*)
+
+#I "../../packages/FSharp.Charting"
+#I "../../packages/Deedle"
+#load "FSharp.Charting.fsx"
+#load "Deedle.fsx"
+#load "../../packages/FsLab/FsLab.fsx"
+
+open System
+open Deedle
+open FSharp.Charting
+open XPlot.GoogleCharts
+open XPlot.GoogleCharts.Deedle
+
+
+let hmi = Frame.ReadCsv(__SOURCE_DIRECTORY__ + "/hmi.csv")
