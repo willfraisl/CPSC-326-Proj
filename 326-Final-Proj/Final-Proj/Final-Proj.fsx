@@ -4,10 +4,16 @@
 
 open XPlot.GoogleCharts
 
+let options = 
+    Options(
+        region = "US",
+        resolution = "provinces"
+    )
 let pop =
-  [ "Germany", 200; "United States", 300
-    "Brazil", 400;  "Canada", 500
-    "France", 600;  "RU", 700 ]
+  [ "US-CA", 200; "US-WA", 300
+    "US-NV", 400;  "US-NY", 500
+    "US-MT", 600;  "US-NJ", 700 ]
 pop
 |> Chart.Geo
-|> Chart.WithLabel "Popularity"
+|> Chart.WithOptions options
+
