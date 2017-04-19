@@ -10,57 +10,57 @@ let options =
         resolution = "provinces"
     )
 let fakeData =
-  [ "Alabama", 1;
-    "Alaska", 1;
-    "Arizona", 1;
-    "Arkansas", 1;
-    "California", 1;
-    "Colorado", 1;
-    "Connecticut", 1;
-    "Delaware", 1;
-    "Florida", 1;
-    "Georgia", 1;
-    "Hawaii", 1;
-    "Idaho", 1;
-    "Illinois", 1;
-    "Indiana", 1;
-    "Iowa", 1;
-    "Kansas", 1;
-    "Kentucky", 1;
-    "Louisiana", 1;
-    "Maine", 1;
-    "Maryland", 1;
-    "Massachusetts", 1;
-    "Michigan", 1;
-    "Minnesota", 1;
-    "Mississippi", 1;
-    "Missouri", 1;
-    "Montana", 1;
-    "Nebraska", 1;
-    "Nevada", 1;
-    "New Hampshire", 1;
-    "New Jersey", 1;
-    "New Mexico", 1;
-    "New York", 1;
-    "North Carolina", 1;
-    "North Dakota", 1;
-    "Ohio", 1;
-    "Oklahoma", 1;
-    "Oregon", 1;
-    "Pennsylvania", 1;
-    "Rhode Island", 1;
-    "South Carolina", 1;
-    "South Dakota", 1;
-    "Tennessee", 1;
-    "Texas", 1;
-    "Utah", 1;
-    "Vermont", 1;
-    "Virginia", 1;
-    "Washington", 1;
-    "West Virginia", 1;
-    "Wisconsin", 1;
-    "Wyoming", 1; ]
+  [ "Alabama", 1, 2;
+    "Alaska", 1, 2;
+    "Arizona", 1, 2;
+    "Arkansas", 1, 2;
+    "California", 1, 2;
+    "Colorado", 1, 2;
+    "Connecticut", 1, 2;
+    "Delaware", 1, 2;
+    "Florida", 1, 2;
+    "Georgia", 1, 2;
+    "Hawaii", 1, 2;
+    "Idaho", 1, 2;
+    "Illinois", 1, 2;
+    "Indiana", 1, 2;
+    "Iowa", 1, 2;
+    "Kansas", 1, 2;
+    "Kentucky", 1, 2;
+    "Louisiana", 1, 2;
+    "Maine", 1, 2;
+    "Maryland", 1, 2;
+    "Massachusetts", 1, 2;
+    "Michigan", 1, 2;
+    "Minnesota", 1, 2;
+    "Mississippi", 1, 2;
+    "Missouri", 1, 2;
+    "Montana", 1, 2;
+    "Nebraska", 1, 2;
+    "Nevada", 1, 2;
+    "New Hampshire", 1, 2;
+    "New Jersey", 1, 2;
+    "New Mexico", 1, 2;
+    "New York", 1, 2;
+    "North Carolina", 1, 2;
+    "North Dakota", 1, 2;
+    "Ohio", 1, 2;
+    "Oklahoma", 1, 2;
+    "Oregon", 1, 2;
+    "Pennsylvania", 1, 2;
+    "Rhode Island", 1, 2;
+    "South Carolina", 1, 2;
+    "South Dakota", 1, 2;
+    "Tennessee", 1, 2;
+    "Texas", 1, 2;
+    "Utah", 1, 2;
+    "Vermont", 1, 2;
+    "Virginia", 1, 2;
+    "Washington", 1, 2;
+    "West Virginia", 1, 2;
+    "Wisconsin", 1, 2;
+    "Wyoming", 1, 2; ]
 fakeData
 |> Chart.Geo
+|> Chart.WithLabels ["Test data"]
 |> Chart.WithOptions options
-
