@@ -6,6 +6,7 @@ open FSharp.Data
 open XPlot.GoogleCharts
 
 type Income = CsvProvider<"../../data/State_median_income.csv">
+type HPI = CsvProvider<"../../data/State_median_income.csv">
 
 let options =
     Options(
@@ -14,11 +15,18 @@ let options =
     )
 
 let income = Income.Load("../../data/State_median_income.csv")
+let hpi = HPI.Load("../../data/State_house_price_index.csv")
 
-let buildList =
+let year_income =
     [ for row in income.Rows do
         yield row.State, row.``2015``
     ]
+
+let year_hpi =
+    [ for row in hpi.Rows do
+        yield row.State, row.``2015``
+    ]
+
 
 let fakeData =
   [ "Alabama", 1, 2;
@@ -73,7 +81,7 @@ let fakeData =
     "Wyoming", 1, 2; ]
 
 
-buildList
+
 
 |> Chart.Geo
 |> Chart.WithLabels ["Median Income"]
