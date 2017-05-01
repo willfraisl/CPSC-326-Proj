@@ -2,13 +2,24 @@
 
 #load "../../packages/FsLab/FsLab.fsx"
 
+open FSharp.Data
 open XPlot.GoogleCharts
 
-let options = 
+type Income = CsvProvider<"../../data/State_median_income.csv">
+
+let options =
     Options(
         region = "US",
         resolution = "provinces"
     )
+
+let income = Income.Load("../../data/State_median_income.csv")
+
+let buildList =
+    [ for row in income.Rows do
+        yield row.State, row.``2015``
+    ]
+
 let fakeData =
   [ "Alabama", 1, 2;
     "Alaska", 1, 2;
@@ -60,7 +71,10 @@ let fakeData =
     "West Virginia", 1, 2;
     "Wisconsin", 1, 2;
     "Wyoming", 1, 2; ]
-fakeData
+
+
+buildList
+
 |> Chart.Geo
-|> Chart.WithLabels ["Test data"]
+|> Chart.WithLabels ["Median Income"]
 |> Chart.WithOptions options
