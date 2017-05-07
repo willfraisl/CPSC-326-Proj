@@ -11,7 +11,8 @@ type HPI = CsvProvider<"../../data/State_house_price_index.csv">
 let options =
     Options(
         region = "US",
-        resolution = "provinces"
+        resolution = "provinces",
+        colorAxis = ColorAxis(colors = [|"red";"yellow";"green";|])
     )
 
 let income = Income.Load("../../data/State_median_income.csv")
@@ -33,3 +34,4 @@ year_income
 |> Chart.Geo
 |> Chart.WithLabels ["Median Income"]
 |> Chart.WithOptions options
+
