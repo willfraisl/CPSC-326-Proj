@@ -3,43 +3,34 @@
 #load "../../packages/FsLab/FsLab.fsx"
 
 open System
+open Deedle
 open FSharp.Data
 open XPlot.GoogleCharts
-
-type Income = CsvProvider<"../../data/State_median_income.csv">
-type HPI = CsvProvider<"../../data/State_house_price_index.csv">
+open XPlot.GoogleCharts.Deedle
 
 let getYear =
     Console.Write("Input year: ")
-    let year = Console.ReadLine()
-    year
+    Console.ReadLine()
 
-let options =
-    Options(
-        region = "US",
-        resolution = "provinces",
-        colorAxis = ColorAxis(colors = [|"red";"yellow";"green";|])
-    )
 
-let income = Income.Load("../../data/State_median_income.csv")
-let hpi = HPI.Load("../../data/State_house_price_index.csv")
+let income = Frame.ReadCsv("State_median_income.csv") |> Frame.indexRowsString("State")
 
-let yearIncome =
-    let theYear = Int32.Parse(getYear)
-    Console.Write(theYear)
-    [ for row in income.Rows do
-        yield row.State, row.theYear
-    ]
 
-let yearHpi =
-    [ for row in hpi.Rows do
-        yield row.State, row.``2015``
-    ]
+let hpi = Frame.ReadCsv("State_house_price_index.csv") |> Frame.indexRowsString("State")
 
-// Only plots one at a time right now
-yearIncome
-// year_hpi
-|> Chart.Geo
-|> Chart.WithLabels ["Median Income"]
-|> Chart.WithOptions options
 
+let ratio = hpi.Zip(income, fun a b -> float(a)/float(b) * 1000.0)
+
+let chart =
+    let options =
+        Options(
+            title = "Income vs HPI",
+            region = "US",
+            resolution = "provinces",
+            colorAxis = ColorAxis(colors = [|"red";"yellow";"green";|])
+        )
+    ratio.GetColumn(getYear)
+    |> Chart.Geo
+    |> Chart.WithLabels ["Score"]
+    |> Chart.WithOptions options
+    |> Chart.Show
