@@ -7,7 +7,7 @@
     median household income for that state. States with a higher score show 
     plases that are "easier" to live. Meaning the median household income is 
     higher compared to the housing price index. Also to begin the program asks 
-    for user input in the console to choose a year to display.
+    for user input in the console to choose a year to display (1991-2015).
 *)
 
 //Load in F# Labs
@@ -22,6 +22,17 @@ open XPlot.GoogleCharts.Deedle
 
 //Function to get year from user
 let getYear =
+    Console.WriteLine()
+    Console.WriteLine("CPSC 326 Final Proj")
+    Console.WriteLine("-------------------")
+    Console.WriteLine()
+    Console.WriteLine("    Our project generates a heatmap of US states that shows a score for each\n 
+    state. The score is generated from a mix of the housing price index and\n 
+    median household income for that state. States with a higher score show\n 
+    plases that are \"easier\" to live. Meaning the median household income is\n 
+    higher compared to the housing price index. Also to begin the program asks\n 
+    for user input in the console to choose a year to display (1991-2015).")
+    Console.WriteLine()
     Console.Write("Input year: ")
     Console.ReadLine()
 
